@@ -14,4 +14,4 @@ For data storage will be used H2 Database.
 | Create telegram bot        | 20.03        | \-            | :ballot_box_with_check: |               |
 | Set up database dependancy | 24.03        | Past deadline | In process              | :exclamation: |
 | Design schema for database | 29.03        | Upcoming      | Not started             |               |
-| Create dispatcher          | 07.04        | Upcoming      | Not started             |               |
+| Create dispatcher          | 07.04        | \-            | :ballot_box_with_check: |               |
