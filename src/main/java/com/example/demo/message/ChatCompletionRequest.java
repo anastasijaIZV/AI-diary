@@ -10,12 +10,14 @@ public class ChatCompletionRequest {
     private String model;
     private List<ChatMessage> messages;
 
-
-    public ChatCompletionRequest(String model,
-                                 String prompt) {
+    public <userMessage> ChatCompletionRequest(
+            String model,
+            String systemPrompt,
+            String userMessage
+    ) {
         this.model = model;
         this.messages = new ArrayList<>();
-        this.messages.add(new ChatMessage("user", prompt));
-
+        this.messages.add(new ChatMessage("system", systemPrompt));
+        this.messages.add(new ChatMessage("user", userMessage));
     }
 }

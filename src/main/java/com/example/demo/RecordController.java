@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.service.Record;
+import com.example.demo.domain.Record;
 import com.example.demo.service.RecordService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

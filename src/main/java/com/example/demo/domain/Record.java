@@ -1,8 +1,6 @@
-package com.example.demo.service;
+package com.example.demo.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +20,11 @@ public class Record {
     @GeneratedValue
     @Id
     private UUID id;
+
+    @ManyToOne
+    private User user;
+
+    private MessageType messageType;
 
     @CreationTimestamp
     private LocalDateTime created;
