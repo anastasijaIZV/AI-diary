@@ -10,8 +10,7 @@ For data storage will be used H2 Database.
 
 | **Task**                   | **Deadline** | **Time**      | **Status**              | Urgency       |
 | -------------------------- | ------------ | ------------- | ----------------------- | ------------- |
-| Update UML diagram         | 19.03        | Past deadline | Not started             |               |
+| Update UML diagram         | 19.03        | Past deadline | Not started             |:exclamation:  |
 | Create telegram bot        | 20.03        | \-            | :ballot_box_with_check: |               |
-| Set up database dependancy | 24.03        | Past deadline | In process              | :exclamation: |
-| Design schema for database | 29.03        | Upcoming      | Not started             |               |
+| Set up database dependancy | 24.03        | \-            | :ballot_box_with_check: |               |
 | Create dispatcher          | 07.04        | \-            | :ballot_box_with_check: |               |
