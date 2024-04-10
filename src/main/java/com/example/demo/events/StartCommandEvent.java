@@ -9,6 +9,6 @@ public class StartCommandEvent extends MessageContainerEvent {
     }
 
     public  MessageType getMessageType() {
-        return MessageType.fromUser;
+        return MessageType.system;
     }
 }

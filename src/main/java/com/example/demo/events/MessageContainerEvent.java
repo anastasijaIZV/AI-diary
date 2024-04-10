@@ -7,12 +7,12 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.User;
 
 @Component
-abstract public class MessageContainerEvent extends ApplicationEvent{
+abstract public class MessageContainerEvent extends ApplicationEvent {
     public MessageContainerEvent(Object source) {
         super(source);
     }
 
-    protected Message getMessage() {
+    public Message getMessage() {
         return (Message) getSource();
     }
 

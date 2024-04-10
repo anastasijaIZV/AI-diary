@@ -21,6 +21,8 @@ public class Record {
     @Id
     private UUID id;
 
+    private long chatId;
+
     @ManyToOne
     private User user;
 
@@ -32,5 +34,6 @@ public class Record {
     @UpdateTimestamp
     private LocalDateTime updated;
 
+    @Lob
     private String text;
 }

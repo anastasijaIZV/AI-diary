@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.config.BotConfig;
+import com.example.demo.events.BotReplyMessageEvent;
 import com.example.demo.events.PhotoMessageEvent;
 import com.example.demo.events.StartCommandEvent;
 import com.example.demo.events.TextMessageEvent;
@@ -32,10 +33,6 @@ public class TelegramBotService extends TelegramLongPollingBot {
         this.config = config;
         List<BotCommand> botCommandList = new ArrayList<>();
         botCommandList.add(new BotCommand("/start", "get a welcome message"));
-//        botCommandList.add(new BotCommand("/mydata", "get your data stored"));
-//        botCommandList.add(new BotCommand("/deletedata", "delete my data"));
-//        botCommandList.add(new BotCommand("/help", "info how to use this bot"));
-//        botCommandList.add(new BotCommand("/settings", "set your preferences"));
         try {
             this.execute(
                     new SetMyCommands(
@@ -45,7 +42,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
                     )
             );
         } catch (TelegramApiException e) {
-            log.error("Error setting bot's command list: " + e.getMessage());
+            log.error("Error setting bot command list: " + e.getMessage());
         }
     }
 
@@ -93,7 +90,11 @@ public class TelegramBotService extends TelegramLongPollingBot {
         message.setText(textToSend);
 
         try {
-            execute(message);
+            eventPublisher.publishEvent(
+                    new BotReplyMessageEvent(
+                            execute(message)
+                    )
+            );
         } catch (TelegramApiException e) {
             log.error(e.getMessage());
         }

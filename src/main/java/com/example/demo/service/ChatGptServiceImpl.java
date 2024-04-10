@@ -15,7 +15,6 @@ public class ChatGptServiceImpl implements ChatGptService {
     RestTemplate restTemplate;
 
     public String getOpenaiResponse(String system, String prompt) {
-        log.info(system);
         ChatCompletionRequest chatCompletionRequest = new ChatCompletionRequest(
                 "gpt-3.5-turbo",
                 system,

@@ -1,8 +1,8 @@
 package com.example.demo.service;
 
+import com.example.demo.domain.MessageType;
 import com.example.demo.domain.RecordRepository;
 import com.example.demo.domain.Record;
-import com.example.demo.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,19 +26,14 @@ public class RecordServiceImpl implements RecordService {
         return recordRepository.findAll(pageable);
     }
 
-    public List<Record> getLast10(User user) {
-        List<Record> list = recordRepository.findTop10ByUser_IdOrderByCreatedDesc(user.getId());
+    public List<Record> getLast10(long chatId) {
+        List<Record> list = recordRepository.findTop20ByChatIdAndMessageTypeNotOrderByCreatedDesc(
+                chatId,
+                MessageType.system
+        );
         Collections.reverse(list);
         return list;
     }
-//    @PostConstruct
-//    public void init() {
-//        for (int i = 0; i < 10; i++) {
-//            Record r = new Record();
-//            r.setText("test text here " + i);
-//            saveRecord(r);
-//        }
-//    }
 }
 
 
