@@ -3,7 +3,8 @@ package com.example.demo.service;
 import com.example.demo.config.TodoToolsConfig;
 import com.example.demo.domain.Record;
 import com.example.demo.message.CompletionResponse;
-import com.example.demo.message.openai.*;
+import com.example.demo.message.openai.CompletionRequest;
+import com.example.demo.message.openai.Message;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class ChatGptServiceImpl implements ChatGptService {
 
         // add message history
         recordService.getHistoryRecords(chatId).stream()
-                .filter(Record::isNotSystem)
+                .filter(Record :: isNotSystem)
                 .map(
                         record -> {
                             try {
@@ -48,7 +49,7 @@ public class ChatGptServiceImpl implements ChatGptService {
                                 throw new RuntimeException(e);
                             }
                         }
-                ).forEach(request::addMessage);
+                ).forEach(request :: addMessage);
 
         // add new user message
         request.addMessage(new Message(
@@ -71,6 +72,7 @@ public class ChatGptServiceImpl implements ChatGptService {
                 CompletionResponse.class
         );
 
+        // todo: insert function event creation
         log.info(response.toString());
 
         assert response != null;

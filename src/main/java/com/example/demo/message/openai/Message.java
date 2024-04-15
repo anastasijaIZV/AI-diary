@@ -1,6 +1,5 @@
 package com.example.demo.message.openai;
 
-import com.example.demo.message.CompletionResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,9 +12,16 @@ import java.util.List;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Message {
+    private MessageRole role;
+    private String content;
+    private List<ToolCall> tool_calls;
+
     public Message(MessageRole role, String content) {
         this.role = role;
         this.content = content;
+    }
+    public enum MessageRole {
+        user, assistant, system
     }
 
     @Data
@@ -30,13 +36,4 @@ public class Message {
             private String arguments;
         }
     }
-
-    public enum MessageRole {
-        user, assistant, system
-    }
-
-    private MessageRole role;
-    private String content;
-
-    private List<ToolCall> tool_calls;
 }

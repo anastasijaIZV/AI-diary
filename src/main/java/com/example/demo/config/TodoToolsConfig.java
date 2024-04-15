@@ -1,7 +1,5 @@
 package com.example.demo.config;
 
-import com.example.demo.message.openai.Function;
-import com.example.demo.message.openai.Property;
 import com.example.demo.message.openai.FunctionTool;
 import lombok.Getter;
 import lombok.Setter;
@@ -49,7 +47,7 @@ public class TodoToolsConfig {
 
     public FunctionTool buildAddTool() {
         FunctionTool tool = new FunctionTool(
-                new Function(
+                new FunctionTool.Function(
                         addName,
                         addDescription
                 )
@@ -57,7 +55,7 @@ public class TodoToolsConfig {
 
         tool.getFunction().getParameters().addProperty(
                 addPropertyTitleName,
-                new Property("string", addPropertyTitleDescription),
+                new FunctionTool.Function.Parameters.Property("string", addPropertyTitleDescription),
                 addPropertyTitleRequired
         );
 
@@ -66,7 +64,7 @@ public class TodoToolsConfig {
 
     public FunctionTool buildDeleteTool() {
         FunctionTool tool = new FunctionTool(
-                new Function(
+                new FunctionTool.Function(
                         deleteName,
                         deleteDescription
                 )
@@ -74,7 +72,7 @@ public class TodoToolsConfig {
 
         tool.getFunction().getParameters().addProperty(
                 deletePropertyIdName,
-                new Property("string", deletePropertyIdDescription),
+                new FunctionTool.Function.Parameters.Property("string", deletePropertyIdDescription),
                 deletePropertyIdRequired
         );
 

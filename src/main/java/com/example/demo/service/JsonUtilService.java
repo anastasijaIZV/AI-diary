@@ -66,8 +66,8 @@ public class JsonUtilService {
     public AbstractCommandDto getDtoFromNode(JsonNode node, User user, long chatId) {
         return new TaskCommandDto(
                 user,
-                chatId,
-                node.get("description").asText()
+                node.get("description").asText(),
+                chatId
         );
     }
 }
