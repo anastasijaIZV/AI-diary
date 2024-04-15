@@ -8,10 +8,11 @@ import lombok.EqualsAndHashCode;
 @Data
 @AllArgsConstructor
 public class TaskCommandDto extends AbstractCommandDto {
+    User user;
+    private long chatId;
     String description;
 
-    public TaskCommandDto(String type, String description) {
-        super(type);
-        this.setDescription(description);
+    public String getType() {
+        return "task";
     }
 }

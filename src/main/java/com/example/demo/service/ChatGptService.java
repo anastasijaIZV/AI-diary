@@ -4,5 +4,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface ChatGptService {
-    String getOpenaiResponse(String system, String prompt);
+    String getOpenaiResponse(long chatId, String system, String prompt);
 }

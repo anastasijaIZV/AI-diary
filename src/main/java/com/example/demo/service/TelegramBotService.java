@@ -3,7 +3,7 @@ package com.example.demo.service;
 import com.example.demo.config.BotConfig;
 import com.example.demo.events.BotReplyMessageEvent;
 import com.example.demo.events.PhotoMessageEvent;
-import com.example.demo.events.StartCommandEvent;
+import com.example.demo.events.StartMenuEvent;
 import com.example.demo.events.TextMessageEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,18 @@ public class TelegramBotService extends TelegramLongPollingBot {
     public TelegramBotService(BotConfig config) {
         this.config = config;
         List<BotCommand> botCommandList = new ArrayList<>();
-        botCommandList.add(new BotCommand("/start", "get a welcome message"));
+        botCommandList.add(
+                new BotCommand(
+                        "/start",
+                        "get a welcome message"
+                )
+        );
+        botCommandList.add(
+                new BotCommand(
+                        "/taskList",
+                        "Get TODO list"
+                )
+        );
         try {
             this.execute(
                     new SetMyCommands(
@@ -69,7 +80,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
             switch (messageText) {
                 case "/start":
                     eventPublisher.publishEvent(
-                            new StartCommandEvent(
+                            new StartMenuEvent(
                                     update.getMessage()
                             )
                     );

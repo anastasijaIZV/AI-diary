@@ -26,7 +26,7 @@ public class RecordServiceImpl implements RecordService {
         return recordRepository.findAll(pageable);
     }
 
-    public List<Record> getLast10(long chatId) {
+    public List<Record> getHistoryRecords(long chatId) {
         List<Record> list = recordRepository.findTop20ByChatIdAndMessageTypeNotOrderByCreatedDesc(
                 chatId,
                 MessageType.system

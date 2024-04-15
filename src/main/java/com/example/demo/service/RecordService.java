@@ -11,5 +11,5 @@ public interface RecordService {
 
     Page<Record> getPagedRecords(Pageable pageable);
 
-    List<Record> getLast10(long chatId);
+    List<Record> getHistoryRecords(long chatId);
 }

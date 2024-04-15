@@ -1,5 +1,6 @@
 package com.example.demo.domain;
 
+import com.example.demo.message.openai.Message;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,4 +37,20 @@ public class Record {
 
     @Lob
     private String text;
+
+    public boolean isNotSystem() {
+        return this.messageType != MessageType.system;
+    }
+
+    public Message.MessageRole getChatRole() throws Exception {
+        switch (messageType) {
+            case fromBot -> {
+                return Message.MessageRole.assistant;
+            }
+            case fromUser -> {
+                return Message.MessageRole.user;
+            }
+            default -> throw new Exception("Incorrect message type");
+        }
+    }
 }

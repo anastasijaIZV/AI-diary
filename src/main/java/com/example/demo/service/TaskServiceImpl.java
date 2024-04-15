@@ -2,22 +2,30 @@ package com.example.demo.service;
 
 import com.example.demo.domain.Task;
 import com.example.demo.domain.TaskRepository;
+import com.example.demo.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.UUID;
+
 @Service
-public class TaskServiceImpl implements TaskService{
+public class TaskServiceImpl implements TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
-    public Task saveTask(Task task) {
-        return taskRepository.save(task);
+    public void saveTask(Task task) {
+        taskRepository.save(task);
     }
 
     public Page<Task> getPagedTasks(Pageable pageable) {
         return taskRepository.findAll(pageable);
+    }
+
+    public List<Task> getTasksForUser(User user) {
+        return taskRepository.findByUserId(user.getId());
     }
 
 }

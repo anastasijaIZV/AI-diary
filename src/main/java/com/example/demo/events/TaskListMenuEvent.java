@@ -2,9 +2,9 @@ package com.example.demo.events;
 
 import com.example.demo.domain.MessageType;
 
-public class StartCommandEvent extends MessageContainerEvent {
+public class TaskListMenuEvent extends MessageContainerEvent {
 
-    public StartCommandEvent(Object source) {
+    public TaskListMenuEvent(Object source) {
         super(source);
     }
 

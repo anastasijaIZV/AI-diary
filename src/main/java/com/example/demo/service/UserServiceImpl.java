@@ -6,12 +6,17 @@ import com.example.demo.domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
 
+    public User getUserById(UUID id) {
+        return userRepository.findById(id).orElseThrow();
+    }
 
     public User addOrCreateTelegramUser(org.telegram.telegrambots.meta.api.objects.User telegramUser) {
         return userRepository.findByTelegramUser_Id(

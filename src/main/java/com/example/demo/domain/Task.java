@@ -21,11 +21,12 @@ public class Task {
     @Id
     private UUID id;
 
+    private long chatId;
+
     private String description;
 
     @ManyToOne
     private User user;
 
-    private Boolean completed;
-
+    private Boolean completed = false;
 }
