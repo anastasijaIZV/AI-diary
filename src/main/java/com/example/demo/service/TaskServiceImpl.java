@@ -28,4 +28,8 @@ public class TaskServiceImpl implements TaskService {
         return taskRepository.findByUserId(user.getId());
     }
 
+    @Override
+    public void deleteTask(UUID id) {
+        this.taskRepository.deleteById(id);
+    }
 }

@@ -20,6 +20,7 @@ public class Message {
         this.role = role;
         this.content = content;
     }
+
     public enum MessageRole {
         user, assistant, system
     }

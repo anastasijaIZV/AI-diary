@@ -8,7 +8,7 @@ public class StartMenuEvent extends MessageContainerEvent {
         super(source);
     }
 
-    public  MessageType getMessageType() {
+    public MessageType getMessageType() {
         return MessageType.system;
     }
 }

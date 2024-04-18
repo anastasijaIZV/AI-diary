@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface TaskService {
 
@@ -14,4 +15,6 @@ public interface TaskService {
     Page<Task> getPagedTasks(Pageable pageable);
 
     List<Task> getTasksForUser(User user);
+
+    void deleteTask(UUID id);
 }

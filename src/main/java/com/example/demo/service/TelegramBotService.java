@@ -24,10 +24,9 @@ import java.util.List;
 @Slf4j
 public class TelegramBotService extends TelegramLongPollingBot {
 
+    final BotConfig config;
     @Autowired
     ApplicationEventPublisher eventPublisher;
-
-    final BotConfig config;
 
     public TelegramBotService(BotConfig config) {
         this.config = config;

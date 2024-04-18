@@ -1,9 +1,9 @@
-package com.example.demo.message;
+package com.example.demo.message.openai;
 
-import com.example.demo.message.openai.Message;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Objects;
 
 @Data
 public class CompletionResponse {
@@ -16,6 +16,12 @@ public class CompletionResponse {
         private int index;
         private Message message;
         private String finish_reason;
-    }
 
+        public boolean isFunction() {
+            return Objects.equals(
+                    this.finish_reason,
+                    "tool_calls"
+            );
+        }
+    }
 }

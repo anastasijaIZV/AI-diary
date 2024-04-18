@@ -45,6 +45,12 @@ public class TodoToolsConfig {
     @Value("${todo.delete.property.id.required}")
     private boolean deletePropertyIdRequired;
 
+    @Value("${todo.list.name}")
+    private String listName;
+
+    @Value("${todo.list.description}")
+    private String listDescription;
+
     public FunctionTool buildAddTool() {
         FunctionTool tool = new FunctionTool(
                 new FunctionTool.Function(
@@ -72,10 +78,22 @@ public class TodoToolsConfig {
 
         tool.getFunction().getParameters().addProperty(
                 deletePropertyIdName,
-                new FunctionTool.Function.Parameters.Property("string", deletePropertyIdDescription),
+                new FunctionTool.Function.Parameters.Property(
+                        "string",
+                        deletePropertyIdDescription
+                ),
                 deletePropertyIdRequired
         );
 
         return tool;
+    }
+
+    public FunctionTool buildListTool() {
+        return new FunctionTool(
+                new FunctionTool.Function(
+                        listName,
+                        listDescription
+                )
+        );
     }
 }
