@@ -1,16 +1,19 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.MessageType;
 import com.example.demo.domain.Record;
 import com.example.demo.domain.RecordRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
+@Slf4j
 @Service
 public class RecordServiceImpl implements RecordService {
 
@@ -18,6 +21,7 @@ public class RecordServiceImpl implements RecordService {
     private RecordRepository recordRepository;
 
     public Record saveRecord(Record record) {
+        log.info(record.toString());
         return recordRepository.save(record);
     }
 
@@ -27,12 +31,13 @@ public class RecordServiceImpl implements RecordService {
     }
 
     public List<Record> getHistoryRecords(long chatId) {
-        List<Record> list = recordRepository.findTop20ByChatIdAndMessageTypeNotOrderByCreatedDesc(
+        LocalDate today = LocalDate.now();
+
+        return recordRepository.findByChatIdAndCreatedBetweenOrderByCreatedAsc(
                 chatId,
-                MessageType.system
+                today.atStartOfDay(),
+                LocalDateTime.of(today, LocalTime.MAX)
         );
-        Collections.reverse(list);
-        return list;
     }
 }
 

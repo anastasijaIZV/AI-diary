@@ -1,6 +1,6 @@
 package com.example.demo.config;
 
-import com.example.demo.message.openai.FunctionTool;
+import com.example.demo.openai.FunctionTool;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;

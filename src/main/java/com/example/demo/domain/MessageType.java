@@ -4,5 +4,6 @@ public enum MessageType {
     fromBot,
     fromUser,
     photo,
-    system
+    system,
+    functionResult,
 }

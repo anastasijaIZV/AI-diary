@@ -1,5 +1,6 @@
 package com.example.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -21,11 +22,13 @@ public class Task {
     @Id
     private UUID id;
 
+    @JsonIgnore
     private long chatId;
 
     private String description;
 
     @ManyToOne
+    @JsonIgnore
     private User user;
 
     private Boolean completed = false;

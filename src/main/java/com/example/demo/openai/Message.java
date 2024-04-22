@@ -1,6 +1,8 @@
-package com.example.demo.message.openai;
+package com.example.demo.openai;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,8 +14,10 @@ import java.util.List;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Message {
+    private String tool_call_id;
     private MessageRole role;
-    private String content;
+    private String name;
+    private Object content;
     private List<ToolCall> tool_calls;
 
     public Message(MessageRole role, String content) {
@@ -21,8 +25,26 @@ public class Message {
         this.content = content;
     }
 
+    public Message(ToolCall toolCall, Object content) throws JsonProcessingException {
+        this.role = MessageRole.tool;
+        this.name = toolCall.function.name;
+        this.tool_call_id = toolCall.id;
+        this.content = new ObjectMapper().writeValueAsString(content);
+    }
+
     public enum MessageRole {
-        user, assistant, system
+        user,
+        assistant,
+        system,
+        function,
+        tool,
+    }
+
+    @Data
+    @AllArgsConstructor
+    public static class ToolCallResult {
+        private String type;
+        private Object content;
     }
 
     @Data

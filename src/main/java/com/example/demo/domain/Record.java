@@ -1,13 +1,13 @@
 package com.example.demo.domain;
 
-import com.example.demo.message.openai.Message;
+import com.example.demo.openai.Message;
+import com.example.demo.service.MessageConverter;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -27,30 +27,19 @@ public class Record {
     @ManyToOne
     private User user;
 
-    private MessageType messageType;
+    private Message.MessageRole messageRole;
 
     @CreationTimestamp
     private LocalDateTime created;
 
-    @UpdateTimestamp
-    private LocalDateTime updated;
-
+    @Convert(converter = MessageConverter.class)
     @Lob
-    private String text;
+    private Message message;
 
-    public boolean isNotSystem() {
-        return this.messageType != MessageType.system;
-    }
-
-    public Message.MessageRole getChatRole() throws Exception {
-        switch (messageType) {
-            case fromBot -> {
-                return Message.MessageRole.assistant;
-            }
-            case fromUser -> {
-                return Message.MessageRole.user;
-            }
-            default -> throw new Exception("Incorrect message type");
-        }
+    public Record(long chatId, User user, Message message) {
+        this.chatId = chatId;
+        this.user = user;
+        this.message = message;
+        this.messageRole = message.getRole();
     }
 }

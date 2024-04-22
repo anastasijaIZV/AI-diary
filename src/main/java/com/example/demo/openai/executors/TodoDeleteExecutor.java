@@ -1,7 +1,5 @@
-package com.example.demo.message.openai.executors;
+package com.example.demo.openai.executors;
 
-import com.example.demo.service.TaskService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
@@ -14,7 +12,7 @@ public class TodoDeleteExecutor extends Executor {
     }
 
     @Override
-    protected String handle(Object arg) {
+    protected Object handle(Object arg) {
         DTO dto = (DTO) arg;
 
         taskService.deleteTask(dto.id());

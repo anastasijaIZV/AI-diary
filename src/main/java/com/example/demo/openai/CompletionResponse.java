@@ -1,4 +1,4 @@
-package com.example.demo.message.openai;
+package com.example.demo.openai;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.example.demo.message.openai;
+package com.example.demo.openai;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class CompletionRequest {
-    private String model = "gpt-3.5-turbo";
+        private String model = "gpt-3.5-turbo";
+//    private String model = "gpt-4-turbo";
     private List<Message> messages = new ArrayList<>();
     private List<FunctionTool> tools;
 

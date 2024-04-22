@@ -17,4 +17,6 @@ public interface TaskService {
     List<Task> getTasksForUser(User user);
 
     void deleteTask(UUID id);
+
+    Task completeTask(UUID id);
 }

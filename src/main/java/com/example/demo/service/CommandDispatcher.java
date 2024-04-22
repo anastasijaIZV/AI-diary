@@ -1,54 +1,62 @@
 package com.example.demo.service;
 
-import com.example.demo.events.BotReplyEvent;
+import com.example.demo.events.BotTextMessageEvent;
+import com.example.demo.events.BotToolCallMessageEvent;
+import com.example.demo.openai.Message;
+import com.example.demo.openai.executors.ExecutorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Slf4j
 @Component
 public class CommandDispatcher {
     @Autowired
     TelegramBotService telegramBotService;
+
     @Autowired
     ExecutorService executorService;
 
-    @EventListener
-    public void onBotCommandEvent(BotReplyEvent event) {
-        executorService.with(
-                event.getDto().chatId(),
-                event.getDto().user()
-        );
+    @Autowired
+    ChatGptService chatGptService;
 
-        if (event.getDto().choice().isFunction()) {
-            event.getDto().choice().getMessage().getTool_calls().stream()
-                    .map(
-                            toolCall -> {
-                                try {
-                                    return executorService.build(
-                                            toolCall.getFunction()
-                                    ).execute();
-                                } catch (Exception error) {
-                                    throw new RuntimeException(error);
-                                }
-                            }
-                    ).forEach(result -> this.telegramBotService.sendMessage(
-                            event.getDto().chatId(),
-                            result
-                    ));
-        } else {
-            this.handleBotMessage(
-                    event.getDto().chatId(),
-                    event.getDto().choice().getMessage().getContent()
-            );
-        }
+    @EventListener
+    public void onBotReplyEvent(BotTextMessageEvent event) {
+        telegramBotService.sendMessage(
+                event.getChatId(),
+                (String) event.getMessage().getContent()
+        );
     }
 
-    private void handleBotMessage(long chatId, String message) {
-        telegramBotService.sendMessage(
-                chatId,
-                message
+    @EventListener
+    public void onBotToolCallEvent(BotToolCallMessageEvent event) {
+        executorService.with(
+                event.getChatId(),
+                event.getUser()
         );
+
+        this.chatGptService.makeCompletionRequest(
+                event.getChatId(),
+                event.getUser(),
+                handleBotToolCallResult(event.getMessage())
+        );
+    }
+
+    private List<Message> handleBotToolCallResult(Message message) {
+        return message.getTool_calls().stream()
+                .map(
+                        toolCall -> {
+                            try {
+                                return executorService.build(
+                                        toolCall
+                                ).execute();
+                            } catch (Exception error) {
+                                throw new RuntimeException(error);
+                            }
+                        }
+                ).toList();
     }
 }

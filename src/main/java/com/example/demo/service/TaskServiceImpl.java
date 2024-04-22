@@ -32,4 +32,15 @@ public class TaskServiceImpl implements TaskService {
     public void deleteTask(UUID id) {
         this.taskRepository.deleteById(id);
     }
+
+    @Override
+    public Task completeTask(UUID id) {
+        Task t = taskRepository.findById(id).orElseThrow(() ->
+                new RuntimeException("Task with id:%s not found".formatted(id))
+        );
+
+        t.setCompleted(true);
+
+        return taskRepository.save(t);
+    }
 }

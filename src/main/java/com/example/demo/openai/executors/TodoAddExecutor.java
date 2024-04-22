@@ -1,20 +1,17 @@
-package com.example.demo.message.openai.executors;
+package com.example.demo.openai.executors;
 
 import com.example.demo.domain.Task;
-import com.example.demo.service.TaskService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TodoAddExecutor extends Executor {
     public TodoAddExecutor() {
-
         super();
         this.argumentsClass = DTO.class;
     }
 
     @Override
-    protected String handle(Object arg) {
+    protected Object handle(Object arg) {
         DTO dto = (DTO) arg;
 
         Task t = new Task();
@@ -23,7 +20,7 @@ public class TodoAddExecutor extends Executor {
         t.setUser(user);
         this.taskService.saveTask(t);
 
-        return "Task %s created".formatted(t.getId());
+        return t;
     }
 
     public record DTO(

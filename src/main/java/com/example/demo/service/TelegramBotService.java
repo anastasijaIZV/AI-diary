@@ -1,10 +1,10 @@
 package com.example.demo.service;
 
 import com.example.demo.config.BotConfig;
-import com.example.demo.events.BotReplyMessageEvent;
-import com.example.demo.events.PhotoMessageEvent;
-import com.example.demo.events.StartMenuEvent;
-import com.example.demo.events.TextMessageEvent;
+import com.example.demo.domain.User;
+import com.example.demo.events.TelegramPhotoMessageEvent;
+import com.example.demo.events.TelegramStartMenuEvent;
+import com.example.demo.events.TelegramTextMessageEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -27,6 +27,9 @@ public class TelegramBotService extends TelegramLongPollingBot {
     final BotConfig config;
     @Autowired
     ApplicationEventPublisher eventPublisher;
+
+    @Autowired
+    UserService userService;
 
     public TelegramBotService(BotConfig config) {
         this.config = config;
@@ -68,28 +71,46 @@ public class TelegramBotService extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        if (update.hasMessage() && update.getMessage().hasPhoto()) {
-            eventPublisher.publishEvent(
-                    new PhotoMessageEvent(update.getMessage())
+        if (update.hasMessage()) {
+            long chatId = update.getMessage().getChatId();
+            User user = userService.addOrCreateTelegramUser(
+                    update.getMessage().getFrom()
             );
-        }
-        if (update.hasMessage() && update.getMessage().hasText()) {
-            String messageText = update.getMessage().getText();
 
-            switch (messageText) {
-                case "/start":
-                    eventPublisher.publishEvent(
-                            new StartMenuEvent(
-                                    update.getMessage()
-                            )
-                    );
-                    break;
-                default:
-                    eventPublisher.publishEvent(
-                            new TextMessageEvent(
-                                    update.getMessage()
-                            )
-                    );
+            // handle user photo message - not implemented
+            if (update.getMessage().hasPhoto()) {
+                eventPublisher.publishEvent(
+                        new TelegramPhotoMessageEvent(
+                                chatId,
+                                user,
+                                update.getMessage()
+                        )
+                );
+            }
+
+            // handle text message
+            if (update.getMessage().hasText()) {
+                String messageText = update.getMessage().getText();
+
+                switch (messageText) {
+                    case "/start":
+                        eventPublisher.publishEvent(
+                                new TelegramStartMenuEvent(
+                                        chatId,
+                                        user,
+                                        update.getMessage()
+                                )
+                        );
+                        break;
+                    default:
+                        eventPublisher.publishEvent(
+                                new TelegramTextMessageEvent(
+                                        chatId,
+                                        user,
+                                        update.getMessage()
+                                )
+                        );
+                }
             }
         }
     }
@@ -100,11 +121,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
         message.setText(textToSend);
 
         try {
-            eventPublisher.publishEvent(
-                    new BotReplyMessageEvent(
-                            execute(message)
-                    )
-            );
+            execute(message);
         } catch (TelegramApiException e) {
             log.error(e.getMessage());
         }
