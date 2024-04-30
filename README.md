@@ -20,3 +20,10 @@ and helping in tough situations.
 | Voice recognition               | 14.05        | upcoming                |               |
 | Photo recognition               | 21.05        | upcoming                |               |
 
+**AI DIARY convesations before and after update**
+
+Before
+![Screenshot before](file:///Users/anastasijabaranova/Desktop/Screenshot%202024-04-30%20at%2015.35.50.png)
+
+After
+![Screenshot after](file:///Users/anastasijabaranova/Desktop/Screenshot%202024-04-30%20at%2015.37.04.png)
