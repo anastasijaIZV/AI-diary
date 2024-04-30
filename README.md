@@ -23,7 +23,7 @@ and helping in tough situations.
 **AI DIARY convesations before and after update**
 
 Before
-![Screenshot before](file:///Users/anastasijabaranova/Desktop/Screenshot%202024-04-30%20at%2015.35.50.png)
+![Screenshot before](![before](https://github.com/anastasijaIZV/demo/assets/148444839/7abbddf3-4d87-4c51-bab0-fa24442c53fd))
 
 After
-![Screenshot after](file:///Users/anastasijabaranova/Desktop/Screenshot%202024-04-30%20at%2015.37.04.png)
+![Screenshot after](![after](https://github.com/anastasijaIZV/demo/assets/148444839/6b9fbc14-c1fa-4624-8e6b-c385863165b5))
