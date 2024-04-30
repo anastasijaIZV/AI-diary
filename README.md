@@ -1,19 +1,22 @@
 **Project AI DIARY APP details**
 
-Project is written in Java and will be developed as web application.
-For interface will be used the telegram interface.
-For data storage will be used H2 Database.
+ChatGPT's OpenAI integration in Telegram for user accessibility and AI brain!
 
-- Project purpose: every day user can share their day to telegram and the contents of the message are analysed by Chat GPT telegram chatbot.
+**Motivation**
+
+Many people have a hard time with time management and motivation, so AI DIARY bot can help with organising tasks
+and helping in tough situations.
 
 **Project development**
 
-| **Task**                        | **Deadline** | **Time** | **Status**              | Urgency |
-|---------------------------------|--------------|----------|-------------------------|---------|
-| Update UML diagram              | 19.03        | \-       | :ballot_box_with_check: |         |
-| Create telegram bot             | 20.03        | \-       | :ballot_box_with_check: |         |
-| Set up database dependency      | 24.03        | \-       | :ballot_box_with_check: |         |
-| Create dispatcher               | 07.04        | \-       | :ballot_box_with_check: |         |
-| Update prompts                  | 21.04        | \-       | in Progress             |         |
-| User friendly function response | 28.04        | \-       | in Progress             |         |
-| User registration process       | 9.05         | \-       | in Progress             |         |
+| **Task**                        | **Deadline** | **Status**              | Urgency       |
+|---------------------------------|--------------|-------------------------|---------------|
+| Update UML diagram              | 19.03        | :ballot_box_with_check: |               |
+| Create telegram bot             | 20.03        | :ballot_box_with_check: |               |
+| Set up database dependency      | 24.03        | :ballot_box_with_check: |               |
+| Create dispatcher               | 07.04        | :ballot_box_with_check: |               |
+| User friendly function response | 28.04        | in progress             | :exclamation: |
+| User registration process       | 10.05        | in progress             |               |
+| Voice recognition               | 14.05        | upcoming                |               |
+| Photo recognition               | 21.05        | upcoming                |               |
+
