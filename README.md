@@ -3,13 +3,13 @@
 
 ChatGPT's OpenAI integration in Telegram for AI brain and user accessibility!
 
-**Motivation**
+Motivation
 -
 
 Many people (me included) have a hard time with time management and motivation, so AI DIARY bot can help with organising tasks
 and helping in tough situations.
 
-**Project development**
+Project development
 -
 
 | **Task**                        | **Deadline** | **Status**              | Urgency       |
@@ -23,24 +23,25 @@ and helping in tough situations.
 | Voice recognition               | 21.05        | upcoming                |               |
 | Photo recognition               | 28.05        | upcoming                |               |
 
-**AI DIARY tasks before and after update**
+AI DIARY tasks before and after update
 - 
 Before
 
-![before](src/main/resources/images/before.jpeg)
+![before](src/main/resources/images/Screenshot 2024-05-01 at 23.18.17.png)
 
 After
 
-![after](src/main/resources/images/after.jpeg)
+![after](src/main/resources/images/Screenshot 2024-05-01 at 23.20.13.png)
 
 
-**Future ideas**
+Future ideas
+-
 - Questionnaire for personalized conversation
 - Calorie count from photo of a meal
 - Voice message option
 
 
-**Documentation**
+Documentation
 - 
 - Programming language: Java
 - Framework: Spring Boot
