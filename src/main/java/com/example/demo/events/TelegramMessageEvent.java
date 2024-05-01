@@ -14,7 +14,6 @@ abstract public class TelegramMessageEvent extends ChatEvent {
     ){
         super(chatId, user, message);
     }
-// TODO fix something here
 
 
     public Message getTelegramMessage() {
