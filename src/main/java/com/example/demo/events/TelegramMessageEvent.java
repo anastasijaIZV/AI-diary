@@ -4,7 +4,6 @@ import com.example.demo.domain.User;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
-@Component
 abstract public class TelegramMessageEvent extends ChatEvent {
 
     public TelegramMessageEvent(
