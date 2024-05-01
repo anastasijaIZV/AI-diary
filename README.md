@@ -27,11 +27,11 @@ AI DIARY tasks before and after update
 - 
 Before
 
-![before](https://github.com/[anastasijaizv]/[demo]/blob/[main]/before.png?raw=true)
+![before](src/main/resources/images/before.png)
 
 After
 
-![after](https://github.com/[anastasijaizv]/[demo]/blob/[main]/after.png?raw=true)
+![after](src/main/resources/images/after.png)
 
 Future ideas
 -
