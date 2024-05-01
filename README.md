@@ -1,13 +1,16 @@
 **Project AI DIARY APP details**
+-
 
-ChatGPT's OpenAI integration in Telegram for user accessibility and AI brain!
+ChatGPT's OpenAI integration in Telegram for AI brain and user accessibility!
 
 **Motivation**
+-
 
-Many people have a hard time with time management and motivation, so AI DIARY bot can help with organising tasks
+Many people (me included) have a hard time with time management and motivation, so AI DIARY bot can help with organising tasks
 and helping in tough situations.
 
 **Project development**
+-
 
 | **Task**                        | **Deadline** | **Status**              | Urgency       |
 |---------------------------------|--------------|-------------------------|---------------|
@@ -16,14 +19,30 @@ and helping in tough situations.
 | Set up database dependency      | 24.03        | :ballot_box_with_check: |               |
 | Create dispatcher               | 07.04        | :ballot_box_with_check: |               |
 | User friendly function response | 28.04        | in progress             | :exclamation: |
-| User registration process       | 10.05        | in progress             |               |
-| Voice recognition               | 14.05        | upcoming                |               |
-| Photo recognition               | 21.05        | upcoming                |               |
+| User registration process       | 14.05        | in progress             |               |
+| Voice recognition               | 21.05        | upcoming                |               |
+| Photo recognition               | 28.05        | upcoming                |               |
 
-**AI DIARY convesations before and after update**
-
+**AI DIARY tasks before and after update**
+- 
 Before
-![Screenshot before](![before](https://github.com/anastasijaIZV/demo/assets/148444839/7abbddf3-4d87-4c51-bab0-fa24442c53fd))
+
+![before](src/main/resources/images/before.jpeg)
 
 After
-![Screenshot after](![after](https://github.com/anastasijaIZV/demo/assets/148444839/6b9fbc14-c1fa-4624-8e6b-c385863165b5))
+
+![after](src/main/resources/images/after.jpeg)
+
+
+**Future ideas**
+- Questionnaire for personalized conversation
+- Calorie count from photo of a meal
+- Voice message option
+
+
+**Documentation**
+- 
+- Programming language: Java
+- Framework: Spring Boot
+- API reference [OpenAI API](https://platform.openai.com/docs/api-reference/introduction)
+
