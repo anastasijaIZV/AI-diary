@@ -27,11 +27,11 @@ AI DIARY tasks before and after update
 - 
 Before
 
-![before](src/main/resources/images/Screenshot 2024-05-01 at 23.18.17.png)
+<img alt="before" src="/Users/anastasijabaranova/IdeaProjects/demo/src/main/resources/images/Screenshot 2024-05-01 at 23.18.17.png"/>
 
 After
 
-![after](src/main/resources/images/Screenshot 2024-05-01 at 23.20.13.png)
+<img alt="after" src="/Users/anastasijabaranova/IdeaProjects/demo/src/main/resources/images/Screenshot 2024-05-01 at 23.20.13.png"/>
 
 
 Future ideas
