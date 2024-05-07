@@ -18,7 +18,7 @@ Project development
 | Create telegram bot             | 20.03        | :ballot_box_with_check: |               |
 | Set up database dependency      | 24.03        | :ballot_box_with_check: |               |
 | Create dispatcher               | 07.04        | :ballot_box_with_check: |               |
-| User friendly function response | 28.04        | in progress             | :exclamation: |
+| User friendly function response | 28.04        |  :ballot_box_with_check:|               |
 | User registration process       | 14.05        | in progress             |               |
 | Voice recognition               | 21.05        | upcoming                |               |
 | Photo recognition               | 28.05        | upcoming                |               |
